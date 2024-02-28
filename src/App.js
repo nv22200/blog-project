@@ -1,12 +1,9 @@
 import './App.css';
-import Card from './components/Card';
 
 function App() {
   return (
     <div className="App">
-      <header class='App-header gap-y-50'>
-      <Card/>
-      </header>
+      <h1 className="text-red-500 text-5xl">Hellow world!</h1>
     </div>
   );
 }
