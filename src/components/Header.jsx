@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {AiOutlineMenu, AiOutlineClose} from "react-icons/ai";
 import {MdKeyboardArrowDown} from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { images } from "../constants";
 import { logout } from "../store/actions/user";
@@ -67,6 +68,7 @@ const NavItem = ({ item }) => {
 };
 
 const Header = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [navIsVisible, setNavVisible] = useState(false);
   const userState = useSelector(state => state.user);
@@ -113,8 +115,7 @@ const Header = () => {
               <div className="relative group">
                 <div className="flex flex-col items-center">
                   <button 
-                    className="flex gap-x-1 items-center mt-5 lg:mt-0 border-2 border-blue-500 px-6 py-3 rounded-full text-blue-500 
-                    font-semibold hover:bg-blue-500 hover:text-white transition-all duration-300" 
+                    className="flex gap-x-1 items-center mt-5 lg:mt-0 border-2 border-blue-500 px-6 py-3 rounded-full text-blue-500 font-semibold hover:bg-blue-500 hover:text-white transition-all duration-300" 
                     onClick={() => setProfileDrowpdown(!profileDrowpdown)}
                   >
                     <span>Profile</span>
@@ -145,8 +146,10 @@ const Header = () => {
               </div>
             </div> 
           ) : ( 
-            <button className="mt-5 lg:mt-0 border-2 border-blue-500 px-6 py-3 rounded-full text-blue-500 
-            font-semibold hover:bg-blue-500 hover:text-white transition-all duration-300">
+            <button 
+              onClick={() => navigate("/login")} 
+              className="mt-5 lg:mt-0 border-2 border-blue-500 px-6 py-3 rounded-full text-blue-500 font-semibold hover:bg-blue-500 hover:text-white transition-all duration-300"
+            >
               Sign in
             </button>
           )}
